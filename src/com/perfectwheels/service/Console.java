@@ -24,7 +24,7 @@ public class Console {
 
         Scanner in = new Scanner(System.in);
         String s = in.next();
-
+        
         Software software = new Software();
         software.setName(s);
 

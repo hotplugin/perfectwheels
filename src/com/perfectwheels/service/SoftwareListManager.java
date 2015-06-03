@@ -6,6 +6,7 @@
 package com.perfectwheels.service;
 
 import com.perfectwheels.dto.Software;
+import java.util.List;
 
 /**
  *
@@ -13,7 +14,13 @@ import com.perfectwheels.dto.Software;
  */
 public class SoftwareListManager {
 
+    List<Software> softwareList;
+
     public SoftwareListManager() {
+    }
+
+    public SoftwareListManager(List<Software> softwareList) {
+        this.softwareList = softwareList;
     }
 
     public void startApplication() {
@@ -24,6 +31,7 @@ public class SoftwareListManager {
 
     public boolean addNewSoftware() {
         // TODO add software to the file list.
+        System.out.println("inside add "+softwareList.toString());
         return true;
     }
     /* You are really going to have to do a lot of work to catch up with assignment 3 */

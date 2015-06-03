@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.perfectwheels.main;
+package com.perfectwheels.ui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -116,7 +116,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       new SoftwareListPanel().setVisible(true);
+       new SoftwarePanel().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
