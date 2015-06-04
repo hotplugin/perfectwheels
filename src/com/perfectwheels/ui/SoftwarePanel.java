@@ -5,7 +5,7 @@
  */
 package com.perfectwheels.ui;
 
-import com.perfectwheels.service.SoftwareListManager;
+import com.perfectwheels.service.SoftwareManager;
 import javax.swing.JFrame;
 
 /**

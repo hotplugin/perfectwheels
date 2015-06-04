@@ -6,7 +6,7 @@
 package com.perfectwheels.service;
 
 import com.perfectwheels.service.Console;
-import com.perfectwheels.service.SoftwareListManager;
+import com.perfectwheels.service.SoftwareManager;
 import java.util.Scanner;
 
 /**
@@ -21,7 +21,7 @@ public class PerfectWheels {
     public static void main(String[] args) {
 
         System.out.println("WELCOME TO PERFECTWHEELS!");
-        SoftwareListManager listManager = new SoftwareListManager();
+        SoftwareManager listManager = new SoftwareManager();
         listManager.startApplication();
 
     }
