@@ -5,6 +5,7 @@
  */
 package com.perfectwheels.service;
 
+import com.perfectwheels.dto.Employee;
 import com.perfectwheels.dto.Software;
 import com.perfectwheels.ui.StartApp;
 import java.util.List;
@@ -15,11 +16,21 @@ import java.util.List;
  */
 public class ReportsManager {
 
-    List<Software> s;
+    List<Software> softwares;
+    List<Employee> employees;
 
-    public void getAllSoftwareList() {
-        
-        s = StartApp.softwareList;
-System.out.println("reportmanager softwarelist "+s.toString());
+    
+    public List<Software> getAllSoftwareList() {
+
+        softwares = SoftwareManager.softwareList;
+        System.out.println("report softwares: "+softwares.toString());
+        return softwares;
+    }
+
+    public List<Employee> getAllEmployeeList() {
+
+        employees = EmployeeManager.employeeList;
+        System.out.println("report employees "+employees.toString());
+        return employees;
     }
 }

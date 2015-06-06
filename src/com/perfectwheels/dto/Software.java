@@ -15,20 +15,29 @@ import java.util.Date;
 public class Software implements Serializable {
     /* You should have access modifiers here eg private String name; */
 
+    int id;
     String name;
-    String license;
+    String licenseNo;
     String licenseType;
     String sellerName;
     Date boughtDate;
 
+    public Software(){}
     /* Your getters and setters must be PRIVATE */
-    public Date getBoughtDate() {
-        return boughtDate;
+    public String toString() {
+        return "Name: " + name + " | licenseNo: " + licenseNo;
+    }
+    
+    /* Your class needs at least one constructor and at least one public method so that other classes can access its functionality */
+
+    public int getId() {
+        return id;
     }
 
-    public void setBoughtDate(Date boughtDate) {
-        this.boughtDate = boughtDate;
+    public void setId(int id) {
+        this.id = id;
     }
+
 
     public String getName() {
         return name;
@@ -38,12 +47,12 @@ public class Software implements Serializable {
         this.name = name;
     }
 
-    public String getLicense() {
-        return license;
+    public String getLicenseNo() {
+        return licenseNo;
     }
 
-    public void setLicense(String license) {
-        this.license = license;
+    public void setLicenseNo(String licenseNo) {
+        this.licenseNo = licenseNo;
     }
 
     public String getLicenseType() {
@@ -62,8 +71,11 @@ public class Software implements Serializable {
         this.sellerName = sellerName;
     }
 
-    public String toString() {
-        return "Name: " + name + " | license: " + license;
+    public Date getBoughtDate() {
+        return boughtDate;
     }
-    /* Your class needs at least one constructor and at least one public method so that other classes can access its functionality */
+
+    public void setBoughtDate(Date boughtDate) {
+        this.boughtDate = boughtDate;
+    }
 }

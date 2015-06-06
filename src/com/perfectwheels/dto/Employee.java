@@ -11,14 +11,23 @@ import java.io.Serializable;
  *
  * @author ShresthBirodh
  */
-public class Employee implements Serializable{ /* but you aren't using any of the serializable functionality here */
-    
+public class Employee implements Serializable { /* but you aren't using any of the serializable functionality here */
+
+
+    int id;
     String name;
     String address;
     String phone;
     String department;
     String joinedDate;
-    String softwareId;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -60,14 +69,9 @@ public class Employee implements Serializable{ /* but you aren't using any of th
         this.joinedDate = joinedDate;
     }
 
-    public String getSoftwareId() {
-        return softwareId;
-    }
+    public String toString() {
 
-    public void setSoftwareId(String softwareId) {
-        this.softwareId = softwareId;
+        return "Name: " + name + " Address " + address + " Phone: " + phone + " Department " + department;
+
     }
-    
-    
-    
 }
