@@ -1,0 +1,4 @@
+1,Microsoft Office,General license,0001
+2,Adobe Photoshop,Poa license,0101
+3,Netbeans IDE,  General Public ,007
+4,Notepad, General lic,0123

@@ -5,19 +5,40 @@
  */
 package com.perfectwheels.ui;
 
+import com.perfectwheels.dto.Software;
 import com.perfectwheels.service.ReportsManager;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Dell
+ * @author ShresthBirodh
  */
 public class ReportsPanel extends javax.swing.JFrame {
 
     /**
      * Creates new form ReportsPanel
      */
+    JTable mainTable;
+    DefaultTableModel cdt;
+
     public ReportsPanel() {
         initComponents();
+        super.setSize(550, 500);
+       //  centerPanel.setSize(500, 450);
+        //  initSoftwareTable();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension d1 = getSize();
+        Double dX = (d.getWidth() - d1.getWidth()) / 2;
+        Double dY = (d.getHeight() - d1.getHeight()) / 2;
+        setLocation(dX.intValue(), dY.intValue());
+        
     }
 
     /**
@@ -32,7 +53,7 @@ public class ReportsPanel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        dataPanel = new javax.swing.JPanel();
+        centerPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,7 +80,7 @@ public class ReportsPanel extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addContainerGap(263, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,16 +92,7 @@ public class ReportsPanel extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout dataPanelLayout = new javax.swing.GroupLayout(dataPanel);
-        dataPanel.setLayout(dataPanelLayout);
-        dataPanelLayout.setHorizontalGroup(
-            dataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        dataPanelLayout.setVerticalGroup(
-            dataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 313, Short.MAX_VALUE)
-        );
+        centerPanel.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,9 +101,9 @@ public class ReportsPanel extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(dataPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(centerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,7 +111,7 @@ public class ReportsPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dataPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(centerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -108,10 +120,47 @@ public class ReportsPanel extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ReportsManager rm = new ReportsManager();
-        rm.getAllSoftwareList();
+        initSoftwareTable();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void initSoftwareTable() {
+
+        String headers[] = {"#", "Product Name", "License Type", "Version"};
+        cdt = new DefaultTableModel(headers, 0);
+
+        centerPanel.removeAll();
+
+        Object data[] = new Object[4];
+        ReportsManager rm = new ReportsManager();
+        List<Software> databaseSoftwares = rm.getAllSoftwareList();
+        for (int i = 0; i < databaseSoftwares.size(); i++) {
+            data[0] = databaseSoftwares.get(i).getId();
+            data[1] = databaseSoftwares.get(i).getName();
+            data[2] = databaseSoftwares.get(i).getLicenseType();
+            data[3] = databaseSoftwares.get(i).getLicenseNo();
+            cdt.addRow(data);
+        }
+
+        mainTable = new JTable(cdt);
+        centerPanel.add(new JScrollPane(mainTable), BorderLayout.CENTER);
+        cdt.fireTableDataChanged();
+        getContentPane().validate();
+        System.out.println("last of us");
+        // centerPanel.setVisible(true);
+//    JFrame frame = new JFrame();
+//    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//
+//    Object rowData[][] = { { "Row1-Column1", "Row1-Column2", "Row1-Column3" },
+//        { "Row2-Column1", "Row2-Column2", "Row2-Column3" } };
+//    Object columnNames[] = { "Column One", "Column Two", "Column Three" };
+//    JTable table = new JTable(rowData, columnNames);
+//
+//    JScrollPane scrollPane = new JScrollPane(table);
+//    frame.add(scrollPane, BorderLayout.CENTER);
+//    frame.setSize(300, 150);
+//    frame.setVisible(true);
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         ReportsManager rm = new ReportsManager();
@@ -154,7 +203,7 @@ public class ReportsPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel dataPanel;
+    private javax.swing.JPanel centerPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;

@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author ShresthBirodh
  */
-public class Employee implements Serializable { /* but you aren't using any of the serializable functionality here */
+public class Employee implements Serializable { 
 
 
     int id;

@@ -26,7 +26,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author Dell
+ * @author ShresthBirodh
  */
 public class StartApp extends javax.swing.JFrame {
 

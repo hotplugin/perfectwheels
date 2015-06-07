@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Dell
+ * @author ShresthBirodh
  */
 public class Console {
 

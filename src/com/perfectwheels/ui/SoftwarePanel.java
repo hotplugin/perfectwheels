@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Dell
+ * @author ShresthBirodh
  */
 public class SoftwarePanel extends javax.swing.JFrame {
 

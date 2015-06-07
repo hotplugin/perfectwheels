@@ -10,7 +10,7 @@ import java.awt.Toolkit;
 
 /**
  *
- * @author Dell
+ * @author ShresthBirodh
  */
 public class MainFrame extends javax.swing.JFrame {
 

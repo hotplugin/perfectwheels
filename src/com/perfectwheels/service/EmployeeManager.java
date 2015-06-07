@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author TomnJerry
+ * @author ShresthBirodh
  */
 public class EmployeeManager {
 

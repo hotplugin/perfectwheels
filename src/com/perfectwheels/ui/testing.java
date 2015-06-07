@@ -7,7 +7,7 @@ package com.perfectwheels.ui;
 
 /**
  *
- * @author Dell
+ * @author ShresthBirodh
  */
 public class testing extends javax.swing.JFrame {
 
